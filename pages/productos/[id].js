@@ -5,6 +5,10 @@ import styled from '@emotion/styled';
 import Error404 from '../../components/Layout/404';
 import Layout from '../../components/Layout/Layout';
 import { css } from '@emotion/react';
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import {es} from 'date-fns/locale';
+import {Campo, InputSubmit} from '../../components/ui/Formulario';
+import Boton from '../../components/ui/Boton';
 
 const ContenedorProducto = styled.div`
    @media (min-width:768px) {
@@ -59,8 +63,6 @@ const Productos = () => {
     
     const { comentarios, creado, descripcion, empresa, nombre, url, urlimagen, votos, creador, haVotado } = producto;
 
-
-
     return ( 
         <Layout>
             <>
@@ -74,10 +76,50 @@ const Productos = () => {
 
             <ContenedorProducto>
                 <div>
-                    1
+                    <p>Publicado hace: { formatDistanceToNow( new Date(creado), {locale: es} )} </p>
+                    <p>Por: {creador.nombre} de {empresa} </p>
+                    <img src={urlimagen}/>                    
+                    <p>{descripcion}</p>
+
+                   {usuario && (
+                       <>
+                        <h2>Agrega tu comentario</h2>
+                        <form>
+                            <Campo>
+                                <input 
+                                type="text" 
+                                name="mensaje"/>
+                            </Campo>
+                            <InputSubmit
+                                type="submit"
+                                value="Agregar Comentario"
+                            />
+                        </form>
+                        </>
+                   )}
+                    <h2 css={css`margin: 2rem 0;`}>Comentarios</h2>
+                        {comentarios.map(comentario => (
+                            <ul>
+
+                            <li>
+                                <p>{comentario.nombre}</p>
+                                <p>Escrito por: {comentario.usuarioNombre}</p>
+                            </li>
+                            </ul>
+
+                        ))}
                 </div>
                 <aside>
-                    2
+                    <Boton
+                       target="_blank"
+                       bgColor="true"
+                       href={url}                    
+                    >Visitar URL</Boton>
+                    <p>{votos} votos</p>
+                    
+                    {usuario && (
+                       <Boton>Votar</Boton>
+                    )}
                 </aside>
             </ContenedorProducto>
             </div>
