@@ -20,9 +20,10 @@ class Firebase {
             app.initializeApp(this.firebaseConfig)
         }
 
-        this.storage = app.storage();
         this.auth = app.auth();
         this.db = app.firestore();
+        this.storage = app.storage();
+
     }
 
     //Registrar usuario

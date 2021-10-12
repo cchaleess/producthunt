@@ -83,7 +83,7 @@ const DetallesProducto = ({producto}) => {
 
     const { id, comentarios, creado, descripcion, empresa, nombre, url, urlimagen, votos } = producto;
 
-    console.log(producto);
+   // console.log(producto);
 
     return ( 
         <Producto>
@@ -93,7 +93,7 @@ const DetallesProducto = ({producto}) => {
                 </div>
 
                 <div>
-                   <Link href="/productos/[id]" as={`/productos/${id}`}>
+                   <Link href="/productos/[id]" as={`/productos/${id}`} passHref={true}>
                         <Titulo>{nombre}</Titulo>
                     </Link>
                     <TextoDescripcion>{descripcion}</TextoDescripcion>

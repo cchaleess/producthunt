@@ -7,7 +7,7 @@ import Buscar from '../ui/Buscar';
 import Navegacion from './Navigation';
 
 import Boton from '../ui/Boton';
-import { FirebaseContext } from '../../firebase';
+import FirebaseContext from '../../firebase/context';
 
 const ContenedorHeader = styled.div`
     max-width: 1200px;
@@ -48,7 +48,7 @@ const Header = () => {
                         align-items: center;
                     `}>
 
-                    <Link href="/">
+                    <Link href="/" passHref={true}>
                         <Logo>P</Logo>
                     </Link>
                    
@@ -73,9 +73,9 @@ const Header = () => {
                      </>
                    ) : (
                     <>
-                        <Link href="/login"><Boton bgColor="true">Login</Boton></Link>
+                        <Link href="/login" passHref={true}><Boton bgColor="true">Login</Boton></Link>
     
-                        <Link href="/crear-cuenta"><Boton bgColor="true">Crear Cuenta</Boton></Link>
+                        <Link href="/crear-cuenta" passHref={true}><Boton bgColor="true">Crear Cuenta</Boton></Link>
                      </>
                    ) }
 
