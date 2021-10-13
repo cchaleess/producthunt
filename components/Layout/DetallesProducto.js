@@ -83,7 +83,7 @@ const DetallesProducto = ({producto}) => {
 
     const { id, comentarios, creado, descripcion, empresa, nombre, url, urlimagen, votos } = producto;
 
-   // console.log(producto);
+    console.log(producto);
 
     return ( 
         <Producto>
