@@ -60,7 +60,7 @@ const Productos = () => {
             }            
             obtenerProducto();
         }        
-    }, [consultarDB, id])
+    }, [consultarDB, firebase.db, id])
 
     if(Object.keys(producto).length === 0 && !error)  return 'Cargando...';
     
